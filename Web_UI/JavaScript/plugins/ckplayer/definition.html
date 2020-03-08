@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ckplayer</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0px;
+            font-family: "Microsoft YaHei",YaHei,"微软雅黑",SimHei,"黑体";
+            font-size: 14px;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+
+<body>
+    <script src="../../lib/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="ckplayer/ckplayer.js"></script>
+    <div id="video" style="width: 100%; height: 500px;"></div>
+    <script type="text/javascript">
+        $("#video").css("height", (document.documentElement.clientHeight) + "px");
+
+        $(function () {
+            //页面按钮默认事件禁止
+            $(document.body).on("keydown", function (event) {
+
+                e = event ? event : (window.event ? window.event : null);
+                currKey = e.keyCode || e.which || e.charCode;
+
+                if (!e.target.type) {
+                    if (currKey == 122) {
+                        e.preventDefault();
+                        return false;
+                    }
+                    if (currKey == 27) {
+                        //escFullScreen();
+                        e.preventDefault();
+                        return false;
+                    }
+                }
+                else if (e.target.readOnly) {
+                    if (currKey == 122) {
+                        e.preventDefault();
+                        return false;
+                    }
+                    if (currKey == 27) {
+                        //escFullScreen();
+                        e.preventDefault();
+                        return false;
+                    }
+                }
+            })
+        })
+
+
+        //document.getElementById("video").width = document.documentElement.clientWidth;
+        //document.getElementById("video").height = document.documentElement.clientHeight;
+
+        function parseQueryString(query) {
+            var parts = query.split('&');
+            var params = {};
+            for (var i = 0, ii = parts.length; i < ii; ++i) {
+                var param = parts[i].split('=');
+                var key = param[0].toLowerCase();
+                var value = param.length > 1 ? param[1] : null;
+                params[decodeURIComponent(key)] = decodeURIComponent(value);
+            }
+            return params;
+        }
+
+
+
+
+        function getRootPath(path) {
+
+            //return "../../../../" + path;
+
+
+            var currPath = top.window.location.pathname;
+
+            var arr = currPath.split("/");
+            var pageName = arr[arr.length - 1];
+            var webPath = "/" + arr[1] + "/" + arr[2] + "/";
+
+            var currHost = window.location.host;
+
+            var queryString = document.location.search.substring(1);
+            var params = parseQueryString(queryString);
+
+            var rootPath = "http://" + currHost + webPath + path;
+
+
+            return rootPath;
+
+        }
+
+
+        var DEFAULT_URL = "";// "oceans-clip.mp4";
+        function play() {
+            var currPath = top.window.location.pathname;
+
+            var arr = currPath.split("/");
+            var pageName = arr[arr.length - 1];
+            var webPath = "/" + arr[1] + "/" + arr[2] + "/";
+
+            var currHost = window.location.host;
+
+            var queryString = document.location.search.substring(1);
+            var params = parseQueryString(queryString);
+            var file = 'file' in params ? params.file : DEFAULT_URL;
+
+            file = getRootPath(file);
+            return file;
+        }
+
+        var videoObject = {
+            container: '#video', //容器的ID或className
+            variable: 'player',//播放函数名称
+            //poster: 'material/poster.jpg',//封面图片
+            video: play(),//视频地址
+            flashplayer:true
+
+        };
+        var player = new ckplayer(videoObject);
+		</script>
+</body>
+
+</html>

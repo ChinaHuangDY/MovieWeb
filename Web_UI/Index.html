@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+
+    <link href="JavaScript/plugins/jqeasyui/themes/default/easyui.css" rel="stylesheet" />
+    <script src="scripts/jquery-1.8.3.min.js"></script>
+    <script src="JavaScript/plugins/jqeasyui/jquery.easyui.min.js"></script>
+    <script src="JavaScript/plugins/jqeasyui/locale/easyui-lang-zh_CN.js"></script>
+    <script src="JavaScript/plugins/jqeasyui/jquery.easyui.config.js"></script>
+    <script src="Index.js"></script>
+
+    <link href="JavaScript/audioplayer/initaudioplayer-1.css" rel="stylesheet" />
+    <script src="JavaScript/audioplayer/amazingaudioplayer.js"></script>
+    <script src="JavaScript/audioplayer/initaudioplayer-1.js"></script>
+    <style>
+        li {
+            line-height: 40px;
+        }
+
+        .topDiv {
+            line-height: 100px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .topTitle {
+            font-size: 50px;
+            font-weight: bold;
+            height: 100px;
+            width: 20%;
+            color: white;
+        }
+
+        .topTool {
+            height: 100px;
+            width: 70%;
+            color: white;
+        }
+
+        .l-btn-text {
+            font-size: 25px;
+        }
+
+        .l-btn {
+            height: 50px;
+            line-height: 48px;
+        }
+
+        /*.panel-header {
+            height: 50px;
+        }*/
+
+        /*.panel-title {
+            font-size: 25px;
+            line-height: 48px;
+        }*/
+
+        .datagrid-header .datagrid-cell span {
+            font-size: 30px;
+        }
+
+        .datagrid-cell, .datagrid-cell-group, .datagrid-header-rownumber, .datagrid-cell-rownumber {
+            line-height: 48px;
+        }
+
+        .datagrid-cell, .datagrid-cell-group, .datagrid-header-rownumber, .datagrid-cell-rownumber {
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="easyui-layout" data-options="fit:true" style="border:1px solid #222222;">
+        <div data-options="region:'north'" style="height:100px;background-color:#222222;overflow:hidden;border:none;">
+            <div class="topDiv">
+                <div class="topTitle"><span style="padding-left: 20px;">音乐</span></div>
+                <div class="topTool">
+                    <!--<input class="easyui-filebox" id="fileBox" data-options="buttonText:'选择文件',buttonAlign:'left'" style="width:300px;">
+                    <a class="easyui-linkbutton btn-window" style="margin-left: 20px;" id="btnUpLoad" onclick="btn_UpLoad()">上传</a>-->
+                    <a class="easyui-linkbutton btn-window" style="" id="btnSave" onclick="btnSave()">添加</a>
+                    <a class="easyui-linkbutton btn-window" style="margin-left: 20px;" id="btnMovies" onclick="btnMovies(1)">MP4</a>
+
+                </div>
+            </div>
+        </div>
+
+        <div data-options="region:'west'" style="width:20%;border:none;background-color:#191B1F;">
+            <div style="font-size:20px;color:white;">
+                <ul>
+                    <li><a onclick="btnMovies(1)">第1集</a></li>
+                    <li><a onclick="btnMovies(1)">第2集</a></li>
+                    <li><a onclick="btnMovies(1)">第3集</a></li>
+                    <li><a onclick="btnMovies(1)">第4集</a></li>
+                    <li><a onclick="btnMovies(1)">第5集</a></li>
+                </ul>
+            </div>
+        </div>
+        <div data-options="region:'center',title:'歌曲列表',iconCls:'icon-ok'" style="border:none;">
+            <table id="DGrid" class="easyui-datagrid"
+                   data-options="border:true,singleSelect:true,fit:true,fitColumns:true,idField:'Id'">
+                <thead>
+                    <tr>
+                        <th data-options="field:'MusicTitle',align:'center',halign: 'center'" width="2">音乐标题</th>
+                        <th data-options="field:'Singer',align:'center',halign: 'center'" width="2">歌手</th>
+                        <th data-options="field:'Album',align:'center',halign: 'center'" width="2">专辑</th>
+                        <th data-options="field:'Duration',align:'center',halign: 'center'" width="1">时长</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div data-options="region:'south'" style="height:100px;background-color:#222222;overflow:hidden;border:none;">
+            <div style="width: 100%; height: 100px;display: flex; flex-direction: row; flex-wrap: wrap;">
+                <div style="width:20%;text-align:center;">
+                    <a class="easyui-linkbutton btn-window" style="margin-top:25px;" id="btnMusic" onclick="btnMusic()">播放</a>
+                </div>
+                <div style="width:70%;">
+                    <div style="height: 35px;"></div>
+                    <input id="AudioSlider" class="easyui-slider" value="0" style="background-color: green; width: 60%; height: 5px;padding-top:47px;"
+                           data-options="min:0,max:253,step:1,showTip:false" />
+                </div>
+                <audio id="audio" src="http://localhost:120/api/Songs/GetAudio" loop="loop" style="width:300px;"></audio>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

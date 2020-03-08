@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MediaElement.js 3.0 - audio/video unification library</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">-->
+    <link href="normalize.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../build/mediaelementplayer.css">
+    <script src="../../../../lib/jquery-1.12.3.min.js"></script>
+
+    <style>
+           html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+             .mejs__chapters-button {
+            display:none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+
+
+        <section style="display:none;">
+            <h3>Global Options</h3>
+            <form action="#" method="get">
+                <label>
+                    Language
+                    <select name="lang">
+                        <option value="ca">Català / Catalan (ca)</option>
+                        <option value="cs">Čeština / Czech (cs)</option>
+                        <option value="de">Deutsch / German (de)</option>
+                        <option value="en" selected>English (en)</option>
+                        <option value="es">Español / Spanish; Castilian (es)</option>
+                        <option value="fa">فارسی / Persian (fa)</option>
+                        <option value="fr">Français / French (fr)</option>
+                        <option value="hr">Hrvatski / Croatian (hr)</option>
+                        <option value="hu">Magyar / Hungarian (hu)</option>
+                        <option value="it">Italiano / Italian (it)</option>
+                        <option value="ja">日本語 / Japanese (ja)</option>
+                        <option value="ko">한국어 / Korean (ko)</option>
+                        <option value="ms">Melayu / Malay (ms)</option>
+                        <option value="nl">Nederlands / Dutch (nl)</option>
+                        <option value="pl">Polski / Polish (pl)</option>
+                        <option value="pt">Português / Portuguese (pt)</option>
+                        <option value="ro">Română / Romanian (ro)</option>
+                        <option value="ru">Русский / Russian (ru)</option>
+                        <option value="sk">Slovensko / Slovak (sk)</option>
+                        <option value="sv">Svenska / Swedish (sv)</option>
+                        <option value="uk">Українська / Ukrainian (uk)</option>
+                        <option value="zh">繁体中文 / Traditional Chinese (zh-TW)</option>
+                        <option value="zh-CN">简体中文 / Simplified Chinese (zh-CN)</option>
+                    </select>
+                </label>
+                <label>
+                    Stretching (Video Only)<select name="stretching">
+                        <option value="auto" selected>Auto (default)</option>
+                        <option value="responsive">Responsive</option>
+                        <option value="fill" selected>Fill</option>
+                        <option value="none" selected>None (original dimensions)</option>
+                    </select>
+                </label>
+            </form>
+        </section>
+
+        <div class="players" id="player1-container">
+
+
+            <div class="media-wrapper">
+                <video id="player" width="640" height="360"  preload="auto" controls playsinline webkit-playsinline>
+<!--                    <source src="http://localhost/APSGCMIS_WJ1.0/Web/UploadFiles/Task/201806/15/4788d7912bb74a4b82c879bc50f2c596.mp4" type="video/mp4">-->
+                    <track srclang="en" kind="subtitles" src="mediaelement.vtt">
+                    <track srclang="en" kind="chapters" src="chapters.vtt">
+                </video>
+            </div>
+
+        </div>
+
+
+
+    </div>
+     <script>
+         document.getElementById("player").width = document.documentElement.clientWidth;
+         document.getElementById("player").height = document.documentElement.clientHeight;
+        
+    </script>
+    <script src="../build/mediaelement-and-player.js"></script>
+    <script src="../build/renderers/dailymotion.js"></script>
+    <script src="../build/renderers/facebook.js"></script>
+    <script src="../build/renderers/soundcloud.js"></script>
+    <script src="../build/renderers/twitch.js"></script>
+    <script src="../build/renderers/vimeo.js"></script>
+    <script src="../build/lang/zh-cn.js"></script>
+    <script src="demo.js"></script>
+    <script src="viewer.js"></script>
+    <script>
+        var videoSrc = play();//新的视频播放地址  
+        document.getElementById("player").src = videoSrc;
+        $(window).resize(function () {
+
+           
+            setTimeout(function () {
+                $("#player video").css("width", "100%")
+                $(".mejs__container").css("width", "100%");
+                $(".mejs__layer").css("width", "100%");
+               
+            },100)
+        })
+        //document.getElementById("player1").play();
+    </script>
+</body>
+</html>

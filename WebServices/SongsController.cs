@@ -154,7 +154,7 @@ namespace WebServices
         [HttpGet, Route("GetImage")]
         public IHttpActionResult GetImage()
         {
-            var path = HostingEnvironment.MapPath("~/App_Data/Images/1.jpg");
+            var path = HostingEnvironment.MapPath("~/App_Data/Images/2.jpg");
             var f = new FileInfo(path);
             if (!f.Exists)
             {
@@ -171,7 +171,7 @@ namespace WebServices
         [HttpGet, Route("GetAudio")]
         public IHttpActionResult GetAudio()
         {
-            var path = HostingEnvironment.MapPath("~/App_Data/en-嚣张.mp3");
+            var path = HostingEnvironment.MapPath("~/App_Data/Audios/嚣张.mp3");
             var f = new FileInfo(path);
             if (!f.Exists)
             {

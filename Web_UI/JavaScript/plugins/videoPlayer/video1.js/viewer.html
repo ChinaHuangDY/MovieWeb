@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>视频播放页面</title>
+    <link href="dist/video-js.min.css" rel="stylesheet" />
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+    <script src="dist/ie8/videojs-ie8.min.js"></script>
+    <script src="dist/video.min.js"></script>
+    <script src="dist/lang/zh-CN.js"></script>
+    <script src="viewer.js"></script>
+</head>
+<body>
+    <video id="player" class="video-js vjs-default-skin" data-setup='{"controls": true, "autoplay": false,"loop":false, "preload": "auto"}'>
+    </video>
+    <script>
+        document.getElementById("player").width = document.documentElement.clientWidth;
+        document.getElementById("player").height = document.documentElement.clientHeight;
+    </script>
+</body>
+</html>

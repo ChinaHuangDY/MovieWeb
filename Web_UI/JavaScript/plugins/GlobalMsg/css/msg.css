@@ -1,0 +1,167 @@
+﻿
+.msg_container {
+    background-color: #ffffff;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 90;
+    -moz-box-shadow: 0 0 13px 0 #7EB596;
+    -webkit-box-shadow: 0 0 13px 0 #7EB596;
+    box-shadow: 0 0 13px 0 #7EB596;
+    border-radius: 5px;
+    display: none;
+}
+
+    .msg_container .msg_head {
+        height: 26px;
+        background-color: #237eca;
+        border-radius: 5px 5px 0px 0px;
+        position: relative;
+    }
+
+.msg_head span {
+}
+
+.msg_head .title {
+    font-size: 12px;
+    color: #ffffff;
+    font-weight: bold;
+    position: absolute;
+    left: 5px;
+    top: 6px;
+}
+
+.msg_head .tool_btns {
+    font-size: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.tool_btns a {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-size: 0;
+    transition: all ease-out 0.2s 0s;
+}
+
+.tool_btns .msg_min {
+    background-image: url(../images/min.png);
+}
+
+.tool_btns .msg_close {
+    border-radius: 0px 5px 0px 0px;
+    background-image: url(../images/close.png);
+}
+
+.tool_btns a:hover {
+    background-color: #1b6bae;
+}
+
+.tool_btns .msg_close:hover {
+    background-color: #d44027;
+}
+
+
+
+.msg_container .msg_foot {
+    padding: 5px;
+    text-align: right;
+    font-size: 12px;
+    font-family: 'Microsoft YaHei';
+    padding-bottom: 10px;
+    color: #333;
+}
+
+    .msg_container .msg_foot a {
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+
+.msg_container .msg_body {
+    padding: 10px;
+    font-size: 14px;
+    overflow-y: auto;
+    min-height: 60px;
+    max-height: 300px;
+    width: 280px;
+    height: auto;
+}
+
+
+.msg_max {
+    background-image: url(../images/Msg.png);
+    background-position: left;
+    background-repeat: no-repeat;
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 0;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+
+/*消息列表样式*/
+
+.msg_item {
+    padding-left: 25px;
+    background-position: left -2px;
+    background-repeat: no-repeat;
+    background-image: url(../images/horn.png);
+    margin-bottom: 15px;
+    border-bottom: 1px solid #d0d0d0;
+}
+
+.msg_item_content {
+    line-height: 18px;
+    word-break: break-all;
+    color: #333;
+    font-weight: bold;
+}
+
+    .msg_item_content a:hover {
+        /*color: #2694f3;
+        text-decoration: underline;
+        cursor: pointer;*/
+    }
+
+   .contentZD {
+        color: #4c4c4c;
+        font-weight: bold;
+    }
+
+  .contentDJ {
+     color: #015293;
+        font-weight: bold;
+}
+     .contentDJ:hover {
+           color: #2694f3;
+            text-decoration: underline;
+            cursor: pointer;
+}
+  
+ 
+
+.msg_item_info {
+    padding: 8px 0;
+    font-size: 0;
+}
+
+    .msg_item_info span {
+        display: inline-block;
+        font-size: 12px;
+        width: 50%;
+        color: #333;
+    }
+
+    .msg_item_info .sendtime {
+        text-align: right;
+    }

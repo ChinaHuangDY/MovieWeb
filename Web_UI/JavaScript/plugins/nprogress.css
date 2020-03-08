@@ -1,0 +1,13 @@
+﻿.__processBar {
+    position: absolute;
+    left: 0;
+    top: 0px;
+    width: 100%;
+}
+
+    .__processBar div {
+        height: 2px;
+        width: 0px;
+        background-color: #29d;
+        border-radius:0 2px 2px 0 ;
+    }

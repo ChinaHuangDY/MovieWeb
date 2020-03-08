@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../../lib/jquery-1.12.3.js"></script>
+    <script src="highcharts.js"></script>
+    <script src="highcharts-3d.js"></script>
+    <script src="exporting.js"></script>
+    <script src="highcharts-zh_CN.js"></script>
+    <script>
+        $(function () {
+            $('#container').highcharts({
+                chart: {
+                    type: 'pie',
+                    options3d: {
+                        enabled: true,
+                        alpha: 10
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                exporting:{  
+                    enabled:false //用来设置是否显示‘打印’,'导出'等功能按钮，不设置时默认为显示  
+                 },
+                credits: {
+                    enabled: false
+                } ,
+                plotOptions: {
+                    pie: {
+                        innerSize:30,
+                        depth: 35,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: false,
+                            format: '{point.name}'
+                        },
+                        showInLegend: true
+
+                    }
+                },
+                colors: ['#f8a719', '#ff0000', '#cccccc'],
+
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x:0
+                },
+                series: [{
+                    type: 'pie',
+                    name: '浏览器占比',
+                    data: [
+                        ['Safari', 8.5],
+                        ['Opera', 6.2],
+                        ['Others', 0.7]
+                    ]
+                }]
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="container" style="height: 100px;width:250px;"></div>
+
+</body>
+</html>

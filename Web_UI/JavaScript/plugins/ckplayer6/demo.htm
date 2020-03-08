@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ckplayer简单调用演示</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0px;
+            font-family: "Microsoft YaHei",YaHei,"微软雅黑",SimHei,"黑体";
+            font-size: 14px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="a1"></div>
+
+    <script type="text/javascript" src="ckplayer/ckplayer.js" charset="utf-8"></script>
+    <script type="text/javascript">
+
+        function parseQueryString(query) {
+            var parts = query.split('&');
+            var params = {};
+            for (var i = 0, ii = parts.length; i < ii; ++i) {
+                var param = parts[i].split('=');
+                var key = param[0].toLowerCase();
+                var value = param.length > 1 ? param[1] : null;
+                params[decodeURIComponent(key)] = decodeURIComponent(value);
+            }
+            return params;
+        }
+
+
+
+
+        function getRootPath(path) {
+
+            //return "../../../../" + path;
+
+
+            var currPath = top.window.location.pathname;
+
+            var arr = currPath.split("/");
+            var pageName = arr[arr.length - 1];
+            var webPath = "/" + arr[1] + "/" + arr[2] + "/";
+
+            var currHost = window.location.host;
+
+            var queryString = document.location.search.substring(1);
+            var params = parseQueryString(queryString);
+
+            var rootPath = "http://" + currHost + webPath + path;
+
+
+            return rootPath;
+
+        }
+
+
+        var DEFAULT_URL = "";// "oceans-clip.mp4";
+        function play() {
+            var currPath = top.window.location.pathname;
+
+            var arr = currPath.split("/");
+            var pageName = arr[arr.length - 1];
+            var webPath = "/" + arr[1] + "/" + arr[2] + "/";
+
+            var currHost = window.location.host;
+
+            var queryString = document.location.search.substring(1);
+            var params = parseQueryString(queryString);
+            var file = 'file' in params ? params.file : DEFAULT_URL;
+
+            file = getRootPath(file);
+            return file;
+        }
+        //QQBrowser
+        if (navigator.userAgent.indexOf('Firefox') >= 0) {
+            var flashvars = {
+                p: 0,
+                e: 1,
+                i: '',
+                e:2
+            };
+            var video = [play()];
+            var support = ['all'];
+            CKobject.embedHTML5('a1', 'ckplayer_a1', '100%', (document.documentElement.clientHeight), video, flashvars, support);
+        } else {
+            var flashvars = {
+                f: play(),
+                c: 0,
+                b: 1,
+                i: '',
+                e:2
+            };
+            var params = { bgcolor: '#FFF', allowFullScreen: true, allowScriptAccess: 'always', wmode: 'transparent' };
+            CKobject.embedSWF('ckplayer/ckplayer.swf', 'a1', 'ckplayer_a1', '100%', (document.documentElement.clientHeight), flashvars, params);
+
+        }
+
+        /*
+        CKobject.embedSWF(播放器路径,容器id,播放器id/name,播放器宽,播放器高,flashvars的值,其它定义也可省略);
+        下面三行是调用html5播放器用到的
+        */
+        //function closelights() {//关灯
+        //    alert(' 本演示不支持开关灯');
+        //}
+        //function openlights() {//开灯
+        //    alert(' 本演示不支持开关灯');
+        //}
+        function ckmarqueeadv() { return '' }
+    </script>
+</body>
+</html>

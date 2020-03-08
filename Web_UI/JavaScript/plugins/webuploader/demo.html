@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <link href="webuploader.css" rel="stylesheet" />
+    <link href="../jqeasyui/themes/icon.css" rel="stylesheet" />
+    <link href="../jqeasyui/themes/default/easyui.css" rel="stylesheet" />
+    <script src="../../lib/jquery-1.12.3.min.js"></script>
+    <script src="../jqeasyui/jquery.easyui.min.js"></script>
+    <script src="webuploader.min.js"></script>
+    <script src="FileUploader.js"></script>
+
+    <script>
+        var uploader = null;
+
+        //创建上传控件
+        function createUploader() {
+            uploader = new FileUploader({
+                basePath: "./",
+                savePath: "UploadFiles/EntpAmanAtt",
+                isShowWindow:true,
+                picker: {
+                    id: '#uploader_1' ,
+                    innerHTML: '上传',
+                    multiple:false
+                },
+                fileType: "all",
+                autoClearQueue: false,
+                auto: false,//是否自动上传
+                onBeforeFileQueued: function () {
+                  alert(1)
+                },
+                onFinished: function (files, picker) {
+
+                    var dataID = $("#" + picker).data("id");
+                   alert("finished")
+                    //   appendFiles(dataID, files);
+
+
+           
+
+                }
+            })
+
+          
+        }
+
+        function getFiles() {
+
+           // uploader.clearQueue();
+            var files = uploader.getCompleteFiles();
+            alert(files.length);
+
+        }
+        $(function () {
+            createUploader();
+        })
+    </script>
+
+</head>
+<body>
+    <div id="wrapper" style="display:block;">
+      
+    <div class="upload-linkbutton" id="uploader_1">
+
+    </div>
+        <input type="button" value="获取成功的文件" onclick="getFiles()" />
+        </div>
+</body>
+</html>

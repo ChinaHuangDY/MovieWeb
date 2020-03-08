@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="nCheck.css" rel="stylesheet" />
+    <script src="../../lib/jquery-1.12.3.min.js"></script>
+    <script src="nCheck.js"></script>
+
+    <script>
+        $(function () {
+
+            $(".custom_Radio").custom_Radio({
+                onCheck: function (name, val) {
+                     alert(name + "\n" + val);
+                },
+                onUnCheck: function (name, val) {
+                    // alert(name + "\n" + val);
+                }
+            })
+
+            $(".custom_Checkbox").custom_Checkbox({
+                onCheck: function (name, val) {
+                     alert(name + "\n" + val);
+                },
+                onUnCheck: function (name, val) {
+                    // alert(name + "\n" + val);
+                }
+            })
+
+        })
+
+
+        //单选
+        function check(name, val) {
+
+            $(".custom_Radio[data-name='" + name + "'][data-value='" + val + "']").custom_Radio("check");
+        }
+
+        function unCheck(name, val) {
+            $(".custom_Radio[data-name='" + name + "'][data-value='" + val + "']").custom_Radio("unCheck");
+        }
+
+        function unCheckAll() {
+            $(".custom_Radio").custom_Radio("unCheck");
+        }
+
+
+        function getCheck(name) {
+            var ck = $(".custom_Radio").custom_Radio("getChecked");
+
+            alert(JSON.stringify(ck))
+        }
+
+
+
+
+        //复选
+
+        function check_ck(name, val) {
+
+            $(".custom_Checkbox[data-name='" + name + "'][data-value='" + val + "']").custom_Checkbox("check");
+        }
+
+        function unCheck_ck(name, val) {
+            $(".custom_Checkbox[data-name='" + name + "'][data-value='" + val + "']").custom_Checkbox("unCheck");
+        }
+
+        function unCheckAll_ck() {
+            $(".custom_Checkbox").custom_Checkbox("unCheck");
+        }
+
+
+        function getCheck_ck(name) {
+            var ck = $(".custom_Checkbox").custom_Checkbox("getChecked");
+
+            alert(JSON.stringify(ck))
+        }
+    </script>
+</head>
+<body>
+
+    <p>
+        <span class="custom_Radio" data-name="F_ISLIMITEDPRO" data-checked="true" data-value="1">是(1)</span>
+        <span class="custom_Radio marginLeft10" data-name="F_ISLIMITEDPRO" data-value="0">否(0)</span>
+
+    </p>
+
+    <p>
+        <span class="custom_Radio" data-name="sex" data-value="1">男(1)</span>
+        <span class="custom_Radio marginLeft10" data-name="sex" data-value="0" data-checked="true">女(0)</span>
+    </p>
+
+    <p>
+        <input type="button" value="取消选中所有" onclick="unCheckAll()" />
+    </p>
+    <p>
+        <input type="button" value="选中‘男’" onclick="check('sex', 1)" />
+        <input type="button" value="选中‘女’" onclick="check('sex', 0)" />
+    </p>
+
+    <p>
+        <input type="button" value="获取选中" onclick="getCheck('sex')" />
+    </p>
+
+
+    <p>
+        <span class="custom_Checkbox" data-name="F_ISLIMITEDPRO" data-checked="true" data-value="1">是(1)</span>
+        <span class="custom_Checkbox marginLeft10" data-name="F_ISLIMITEDPRO" data-value="0">否(0)</span>
+
+    </p>
+
+    <p>
+        <span class="custom_Checkbox" data-name="sex" data-value="1">男(1)</span>
+        <span class="custom_Checkbox marginLeft10" data-name="sex" data-value="0" data-checked="true">女(0)</span>
+
+    </p>
+
+    <p>
+        <input type="button" value="取消选中所有" onclick="unCheckAll_ck()" />
+    </p>
+    <p>
+        <input type="button" value="选中‘男’" onclick="check_ck('sex', 1)" />
+        <input type="button" value="选中‘女’" onclick="check_ck('sex', 0)" />
+    </p>
+
+    <p>
+        <input type="button" value="获取选中" onclick="getCheck_ck('sex')" />
+    </p>
+</body>
+</html>

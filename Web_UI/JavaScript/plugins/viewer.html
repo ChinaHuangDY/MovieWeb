@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>图片/文本预览</title>
+    <link rel="stylesheet" href="jquery.iviewer.css" />
+    <link href="viewer.css" rel="stylesheet" />
+
+    <script src="../../lib/jquery-1.12.3.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <script src="jquery.mousewheel.min.js"></script>
+
+    <script src="jquery.iviewer.min.js"></script>
+
+    <script src="viewer.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #404040;
+            background-image: url(images/texture.png);
+        }
+
+        #viewOuterMiddle {
+            height: 100%;
+            width: 92%;
+            margin: 0 auto;
+            position: relative;
+            /*top: 50%;*/
+
+        }
+
+        #viewInnerMiddle {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            /*top: -50%;*/
+        }
+
+        #viewContainer {
+            width: 100%;
+            height: 100%;
+            background-image: url("images/transparent.png");
+            border-image: url(images/shadow.png) 9 9 repeat;
+            position: relative;
+        }
+
+        #positionButtonDiv {
+            background: rgb(58, 56, 63);
+            background: rgba(58, 56, 63, 0.8);
+            border: solid 1px #100000;
+            color: #fff;
+            padding: 8px;
+            text-align: left;
+            position: absolute;
+            right: 35px;
+            top: 35px;
+        }
+
+            #positionButtonDiv .positionButtonSpan img {
+                border: 0;
+            }
+
+        .positionMapClass area {
+            cursor: pointer;
+        }
+
+        .zoomButton {
+            border: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!--工具栏-->
+    <div class="toolbar">
+        <div class="outerCenter">
+            <div class="innerCenter" id="toolbarViewerMiddle">
+                <div class="splitToolbarButton">
+                    <button id="zoomOut" class="toolbarButton zoomOut" title="缩小">
+                        <span>Zoom Out</span>
+                    </button>
+                    <div class="splitToolbarButtonSeparator"></div>
+                    <button id="zoomIn" class="toolbarButton zoomIn" title="放大">
+                        <span>Zoom In</span>
+                    </button>
+                </div>
+                <span id="scaleSelectContainer" class="dropdownToolbarButton">
+                    <select id="scaleSelect" title="">
+                        <option id="pageAutoOption" title="" value="auto" selected="selected">自动缩放</option>
+                        <option id="pageActualOption" title="" value="100">实际大小</option>
+                      <option id="customScaleOption" title="" value="custom"></option>
+                        <option title="" value="50">50%</option>
+                        <option title="" value="75">75%</option>
+                        <option title="" value="100">100%</option>
+                        <option title="" value="125">125%</option>
+                        <option title="" value="150">150%</option>
+                        <option title="" value="200">200%</option>
+                        <option title="" value="300">300%</option>
+                        <option title="" value="400">400%</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="viewContainer">
+        <div id="viewOuterMiddle">
+
+            <div id="viewInnerMiddle">
+                <div id="viewContainer">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

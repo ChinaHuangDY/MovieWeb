@@ -109,7 +109,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Video\林俊杰 - 关键词.mp4" />
+    <Content Include="App_Data\Audios\嚣张.mp3" />
+    <Content Include="App_Data\Images\1.jpg" />
+    <Content Include="App_Data\Images\2.jpg" />
+    <Content Include="App_Data\Images\4.jpg" />
+    <Content Include="App_Data\Video\1.mp4" />
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />

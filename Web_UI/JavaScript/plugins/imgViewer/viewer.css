@@ -1,0 +1,252 @@
+﻿
+.toolbar {
+    position: relative;
+    height: 32px;
+    background-color: #474747; /* fallback */
+    background-image: url(images/texture.png), linear-gradient(hsla(0,0%,32%,.99), hsla(0,0%,27%,.95));
+    box-shadow: inset 1px 0 0 hsla(0,0%,100%,.08), inset 0 1px 1px hsla(0,0%,0%,.15), inset 0 -1px 0 hsla(0,0%,100%,.05), 0 1px 0 hsla(0,0%,0%,.15), 0 1px 1px hsla(0,0%,0%,.1);
+}
+
+.viewContainer {
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    position: absolute;
+    top: 32px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    outline: none;
+}
+
+.outerCenter {
+    pointer-events: none;
+    position: relative;
+    float: right;
+    right: 50%;
+}
+
+.innerCenter {
+    pointer-events: auto;
+    position: relative;
+    float: right;
+    right: -50%;
+}
+
+
+.splitToolbarButtonSeparator {
+    padding: 8px 0;
+    width: 1px;
+    background-color: hsla(0,0%,0%,.5);
+    z-index: 99;
+    box-shadow: 0 0 0 1px hsla(0,0%,100%,.08);
+    display: inline-block;
+    float: left;
+    margin:5px 0;
+}
+
+
+.toolbarButton {
+    border: 0 none;
+    background: none;
+    width: 32px;
+    height: 25px;
+    margin: 0;
+    float: left;
+    border-radius: 0;
+    position: relative;
+}
+
+    .toolbarButton > span {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+    }
+
+    .toolbarButton.zoomOut::before {
+        content: url(images/toolbarButton-zoomOut.png);
+    }
+
+    .toolbarButton.zoomIn::before {
+        content: url(images/toolbarButton-zoomIn.png);
+    }
+
+
+    .toolbarButton[disabled],
+    .secondaryToolbarButton[disabled],
+    .overlayButton[disabled] {
+        opacity: .5;
+    }
+
+    .toolbarButton.group {
+        margin-right: 0;
+    }
+
+
+.splitToolbarButton {
+float:left;
+position:relative;
+margin:3px 2px 4px 0;
+}
+
+.splitToolbarButton.toggled .toolbarButton {
+    margin: 0;
+}
+
+.toolbarButton,
+.dropdownToolbarButton {
+    margin: 3px 2px 4px 0;
+    min-width: 16px;
+    padding: 2px 6px 0;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    color: hsla(0,0%,100%,.8);
+    font-size: 12px;
+    line-height: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: default;
+    -webkit-transition-property: background-color, border-color, box-shadow;
+    -webkit-transition-duration: 150ms;
+    -webkit-transition-timing-function: ease;
+    transition-property: background-color, border-color, box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: ease;
+}
+
+.splitToolbarButton:hover > .toolbarButton,
+.splitToolbarButton:focus > .toolbarButton {
+    background-color: hsla(0,0%,0%,.12);
+    background-image: linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,100%,0));
+    background-clip: padding-box;
+    border: 1px solid hsla(0,0%,0%,.35);
+    border-color: hsla(0,0%,0%,.32) hsla(0,0%,0%,.38) hsla(0,0%,0%,.42);
+    box-shadow: 0 1px 0 hsla(0,0%,100%,.05) inset, 0 0 1px hsla(0,0%,100%,.15) inset, 0 1px 0 hsla(0,0%,100%,.05);
+    -webkit-transition-property: background-color, border-color, box-shadow;
+    -webkit-transition-duration: 150ms;
+    -webkit-transition-timing-function: ease;
+    transition-property: background-color, border-color, box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: ease;
+}
+
+.splitToolbarButton > .toolbarButton:hover,
+.splitToolbarButton > .toolbarButton:focus,
+.dropdownToolbarButton:hover {
+    background-color: hsla(0,0%,0%,.2);
+    box-shadow: 0 1px 0 hsla(0,0%,100%,.05) inset, 0 0 1px hsla(0,0%,100%,.15) inset, 0 0 1px hsla(0,0%,0%,.05);
+    z-index: 199;
+}
+
+.splitToolbarButton > .toolbarButton {
+    position: relative;
+}
+
+    .splitToolbarButton > .toolbarButton:first-child {
+        position: relative;
+        margin: 0;
+        margin-right: -1px;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+        border-right-color: transparent;
+    }
+
+    .splitToolbarButton > .toolbarButton:last-child {
+        position: relative;
+        margin: 0;
+        margin-left: -1px;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+        border-left-color: transparent;
+    }
+
+
+
+.splitToolbarButton:hover > .splitToolbarButtonSeparator,
+.splitToolbarButton.toggled > .splitToolbarButtonSeparator {
+    padding: 12px 0;
+    margin: 1px 0;
+    box-shadow: 0 0 0 1px hsla(0,0%,100%,.03);
+    -webkit-transition-property: padding;
+    -webkit-transition-duration: 10ms;
+    -webkit-transition-timing-function: ease;
+    transition-property: padding;
+    transition-duration: 10ms;
+    transition-timing-function: ease;
+}
+
+
+
+.toolbarButton:hover,
+.toolbarButton:focus,
+.dropdownToolbarButton,
+.overlayButton,
+.secondaryToolbarButton:hover,
+.secondaryToolbarButton:focus {
+    background-color: hsla(0,0%,0%,.12);
+    background-image: linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,100%,0));
+    background-clip: padding-box;
+    border: 1px solid hsla(0,0%,0%,.35);
+    border-color: hsla(0,0%,0%,.32) hsla(0,0%,0%,.38) hsla(0,0%,0%,.42);
+    box-shadow: 0 1px 0 hsla(0,0%,100%,.05) inset, 0 0 1px hsla(0,0%,100%,.15) inset, 0 1px 0 hsla(0,0%,100%,.05);
+}
+
+    .toolbarButton:hover:active,
+    .overlayButton:hover:active,
+    .dropdownToolbarButton:hover:active,
+    .secondaryToolbarButton:hover:active {
+        background-color: hsla(0,0%,0%,.2);
+        background-image: linear-gradient(hsla(0,0%,100%,.05), hsla(0,0%,100%,0));
+        border-color: hsla(0,0%,0%,.35) hsla(0,0%,0%,.4) hsla(0,0%,0%,.45);
+        box-shadow: 0 1px 1px hsla(0,0%,0%,.1) inset, 0 0 1px hsla(0,0%,0%,.2) inset, 0 1px 0 hsla(0,0%,100%,.05);
+        -webkit-transition-property: background-color, border-color, box-shadow;
+        -webkit-transition-duration: 10ms;
+        -webkit-transition-timing-function: linear;
+        transition-property: background-color, border-color, box-shadow;
+        transition-duration: 10ms;
+        transition-timing-function: linear;
+    }
+
+
+.toolbarButton.toggled:hover:active,
+.splitToolbarButton.toggled > .toolbarButton.toggled:hover:active,
+.secondaryToolbarButton.toggled:hover:active {
+    background-color: hsla(0,0%,0%,.4);
+    border-color: hsla(0,0%,0%,.4) hsla(0,0%,0%,.5) hsla(0,0%,0%,.55);
+    box-shadow: 0 1px 1px hsla(0,0%,0%,.2) inset, 0 0 1px hsla(0,0%,0%,.3) inset, 0 1px 0 hsla(0,0%,100%,.05);
+}
+
+
+
+
+.dropdownToolbarButton {
+   float:left;
+    width: 80px;
+    max-width: 80px;
+    padding: 0;
+    overflow: hidden;
+    background: url(images/toolbarButton-menuArrows.png) no-repeat;
+    background-position: 95%;
+}
+
+#customScaleOption {
+  display: none;
+}
+
+
+    .dropdownToolbarButton > select {
+        min-width: 140px;
+        font-size: 12px;
+        color: hsl(0,0%,95%);
+        margin: 0;
+        padding: 3px 2px 2px;
+        border: none;
+        background: rgba(0,0,0,0); /* Opera does not support 'transparent' <select> background */
+    }
+
+        .dropdownToolbarButton > select > option {
+            background: hsl(0,0%,24%);
+        }
+
+
